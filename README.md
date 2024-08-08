@@ -37,7 +37,7 @@ This project is a Twitter-like social network web application that allows users 
 
 ### Installation
 
-1. **Clone the Repository:**
+**Clone the Repository:**
    ```bash
    git clone https://github.com/suman154/Network.git
 
