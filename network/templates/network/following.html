@@ -1,0 +1,23 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'network/following.js' %}"></script>
+    <script src="{% static 'network/createElements.js' %}"></script>
+    <script src="{% static 'network/API.js' %}"></script>
+    <script src="{% static 'network/posts.js' %}"></script>
+    <script src="{% static 'network/like.js' %}"></script>
+    <script src="{% static 'network/getCookies.js' %}"></script>
+    <script src="{% static 'network/edit.js' %}"></script>
+{% endblock %}
+
+{% block username %}
+    {{ user.is_authenticated|json_script:"user_is_authenticated" }}
+{% endblock %}
+
+{% block body %}
+    <br>
+    <div class="w-75 mx-auto" id="FollowingPostsContainer"></div>
+    <br> 
+    <div class="w-75 mx-auto" id="FollowingPaginationContainer"></div>
+{% endblock %}
