@@ -1,5 +1,35 @@
 {% extends "network/layout.html" %}
+{% load static %}
+{% block script %}
+    <script src="{% static 'network/index.js' %}"></script>
+    <script src="{% static 'network/createElements.js' %}"></script>
+    <script src="{% static 'network/API.js' %}"></script>
+    <script src="{% static 'network/posts.js' %}"></script>
+    <script src="{% static 'network/like.js' %}"></script>
+    <script src="{% static 'network/getCookies.js' %}"></script>
+    <script src="{% static 'network/edit.js' %}"></script>
+{% endblock %}
+
+{% block username %}
+    {{ user.is_authenticated|json_script:"user_is_authenticated" }}
+{% endblock %}
 
 {% block body %}
-    TODO
+    {% if user.is_authenticated %}
+        <br>
+        <div class="w-75 mx-auto" id="NewPostContainer">
+            <h5>New Post</h5>
+            <form method="POST" id="NewPostForm">
+                {% csrf_token %}
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Write your new post" rows="3" id="NewPostText"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="NewPostSubmit">Post</button>
+            </form>
+        </div>
+    {% endif %}
+    <br>
+    <div class="w-75 mx-auto" id="AllPostsContainer"></div>
+    <br> 
+    <div class="w-75 mx-auto" id="AllPostsPaginationContainer"></div>
 {% endblock %}
