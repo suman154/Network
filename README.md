@@ -38,11 +38,11 @@ This project is a Twitter-like social network web application that allows users 
 ### Installation
 
 **Clone the Repository:**
-   ```bash
+   ```sh
    git clone https://github.com/suman154/Network.git
+   ```
 
 Install dependencies:
-
 ```sh
 pip install -r requirements.txt
 ```
