@@ -1,0 +1,35 @@
+{% extends 'network/layout.html' %}
+{% load static %}
+{% block script %}
+    <script src="{% static 'network/profile.js' %}"></script>
+    <script src="{% static 'network/createElements.js' %}"></script>
+    <script src="{% static 'network/API.js' %}"></script>
+    <script src="{% static 'network/posts.js' %}"></script>
+    <script src="{% static 'network/follow.js' %}"></script>
+    <script src="{% static 'network/like.js' %}"></script>
+    <script src="{% static 'network/getCookies.js' %}"></script>
+    <script src="{% static 'network/edit.js' %}"></script>
+{% endblock %}
+
+{% block username %}
+    {{ requested_user.username|json_script:"username" }}
+    {{ user.is_authenticated|json_script:"user_is_authenticated" }}
+{% endblock %}
+
+{% block body %}
+    <br>
+    <div class="w-75 mx-auto">
+        <h5 id="ProfileUsernameContainer">
+            @{{ requested_user.username }} 
+        </h5>
+        <h6 id="ProfileFollowersContainer"></h6>
+        {% if user != requested_user and user.is_authenticated %}
+            {% csrf_token %}
+            <button type="button" class="btn btn-sm btn-primary" id="ProfileFollowButton"></button> 
+        {% endif %}
+    </div>
+    <br>
+    <div class="w-75 mx-auto" id="ProfilePostsContainer"></div>
+    <br> 
+    <div class="w-75 mx-auto" id="ProfilePaginationContainer"></div>
+{% endblock %}
